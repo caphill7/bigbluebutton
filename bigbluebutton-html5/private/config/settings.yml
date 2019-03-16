@@ -8,14 +8,14 @@ public:
     listenOnlyMode: true
     forceListenOnly: false
     skipCheck: false
-    clientTitle: BigBlueButton
-    appName: BigBlueButton HTML5 Client
-    bbbServerVersion: 2.2-dev
-    copyright: "©2019 BigBlueButton Inc."
-    html5ClientBuild: HTML5_CLIENT_VERSION
-    helpLink: https://bigbluebutton.org/html5/
+    clientTitle: VCP
+    appName: FSE Virtual Classroom Platform
+    bbbServerVersion: 2.2
+    copyright: ©2019 Fulton Schools of Engineering | Arizona State University
+    html5ClientBuild: 328
+    helpLink: https://asadev.asu.edu/vcp/help
     lockOnJoin: true
-    basename: "/html5client"
+    basename: /html5client
     askForFeedbackOnLogout: false
     defaultSettings:
       application:
@@ -30,8 +30,8 @@ public:
         viewParticipantsWebcams: true
         viewScreenshare: true
       cc:
-        backgroundColor: "#FFFFFF"
-        fontColor: "#000000"
+        backgroundColor: '#FFFFFF'
+        fontColor: '#000000'
         enabled: false
         fontFamily: Calibri
         fontSize: 16px
@@ -75,18 +75,18 @@ public:
         accesskey: S
         descId: openStatus
     branding:
-      displayBrandingArea: false
+      displayBrandingArea: true
     allowHTML5Moderator: true
-    httpsConnection: false
+    httpsConnection: true
     connectionTimeout: 60000
     showHelpButton: true
     enableExternalVideo: true
   kurento:
-    wsUrl: HOST
+    wsUrl: wss://tardisdev.fulton.ad.asu.edu/bbb-webrtc-sfu
     chromeDefaultExtensionKey: akgoaoikmbmhcopjgakkcepdgdgkjfbc
     chromeDefaultExtensionLink: https://chrome.google.com/webstore/detail/bigbluebutton-screenshare/akgoaoikmbmhcopjgakkcepdgdgkjfbc
-    chromeExtensionKey: KEY
-    chromeExtensionLink: LINK
+    chromeExtensionKey: fjnmjjekhkabpmdbahaehlhbakpelbjb
+    chromeExtensionLink: https://chrome.google.com/webstore/detail/fsetc-screenshare-extensi/fjnmjjekhkabpmdbahaehlhbakpelbjb
     chromeScreenshareSources:
     - window
     - screen
@@ -124,8 +124,8 @@ public:
     system_messages_keys:
       chat_clear: PUBLIC_CHAT_CLEAR
   note:
-    enabled: false
-    url: ETHERPAD_HOST
+    enabled: true
+    url: https://tardisdev.fulton.ad.asu.edu/pad
     config:
       showLineNumbers: false
       showChat: false
@@ -136,15 +136,15 @@ public:
     autoSwapLayout: false
     hidePresentation: false
   media:
-    stunTurnServersFetchAddress: "/bigbluebutton/api/stuns"
-    mediaTag: "#remote-media"
+    stunTurnServersFetchAddress: /bigbluebutton/api/stuns
+    mediaTag: '#remote-media'
     callTransferTimeout: 5000
     callHangupTimeout: 2000
     callHangupMaximumRetries: 10
-    echoTestNumber: '9196'
+    echoTestNumber: "9196"
   presentation:
     defaultPresentationFile: default.pdf
-    uploadEndpoint: "/bigbluebutton/presentation/upload"
+    uploadEndpoint: /bigbluebutton/presentation/upload
     uploadSizeMin: 0
     uploadSizeMax: 50000000
     uploadValidMimeTypes:
@@ -196,29 +196,29 @@ public:
       multiUserPenOnly: false
       colors:
       - label: black
-        value: "#000000"
+        value: '#000000'
       - label: white
-        value: "#ffffff"
+        value: '#ffffff'
       - label: red
-        value: "#ff0000"
+        value: '#ff0000'
       - label: orange
-        value: "#ff8800"
+        value: '#ff8800'
       - label: eletricLime
-        value: "#ccff00"
+        value: '#ccff00'
       - label: Lime
-        value: "#00ff00"
+        value: '#00ff00'
       - label: Cyan
-        value: "#00ffff"
+        value: '#00ffff'
       - label: dodgerBlue
-        value: "#0088ff"
+        value: '#0088ff'
       - label: blue
-        value: "#0000ff"
+        value: '#0000ff'
       - label: violet
-        value: "#8800ff"
+        value: '#8800ff'
       - label: magenta
-        value: "#ff00ff"
+        value: '#ff00ff'
       - label: silver
-        value: "#c0c0c0"
+        value: '#c0c0c0'
       thickness:
       - value: 14
       - value: 12
@@ -267,16 +267,25 @@ public:
       - pencil
       - hand
   clientLog:
-    server: { enabled: true, level: info }
-    console: { enabled: true, level: debug }
-    external: { enabled: false, level: info, url: https://LOG_HOST/html5Log, method: POST, throttleInterval: 400 }
+    server:
+      enabled: true
+      level: info
+    console:
+      enabled: true
+      level: debug
+    external:
+      enabled: false
+      level: info
+      url: https://LOG_HOST/html5Log
+      method: POST
+      throttleInterval: 400
 private:
   app:
     captionsChunkLength: 1000
     pencilChunkLength: 100
   redis:
     host: 127.0.0.1
-    post: '6379'
+    post: "6379"
     timeout: 5000
     debug: false
     channels:

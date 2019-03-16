@@ -4,16 +4,21 @@ import Users from '/imports/api/users';
 import Meetings from '/imports/api/meetings';
 import VoiceUsers from '/imports/api/voice-users/';
 
-import stringHash from 'string-hash';
+/* import stringHash from 'string-hash'; */
 import flat from 'flat';
 
 import addVoiceUser from '/imports/api/voice-users/server/modifiers/addVoiceUser';
 import changeRole from '/imports/api/users/server/modifiers/changeRole';
 
+/*
 const COLOR_LIST = [
   '#7b1fa2', '#6a1b9a', '#4a148c', '#5e35b1', '#512da8', '#4527a0',
   '#311b92', '#3949ab', '#303f9f', '#283593', '#1a237e', '#1976d2', '#1565c0',
   '#0d47a1', '#0277bd', '#01579b',
+];
+*/
+const COLOR_LIST = [
+  '#8c1d40', '#5c6670',
 ];
 
 export default function addUser(meetingId, user) {
@@ -65,8 +70,14 @@ export default function addUser(meetingId, user) {
   }
 
   /* While the akka-apps dont generate a color we just pick one
-    from a list based on the userId */
-  const color = COLOR_LIST[stringHash(user.intId) % COLOR_LIST.length];
+    from a list based on the  user role  xxx userId xxx */
+
+  /*  const color = COLOR_LIST[stringHash(user.intId) % COLOR_LIST.length];  */
+  /*  const color = COLOR_LIST[0]; */
+  let [, color] = COLOR_LIST;
+  if (userRole === ROLE_MODERATOR) {
+    [color] = COLOR_LIST;
+  }
 
   const modifier = {
     $set: Object.assign(
